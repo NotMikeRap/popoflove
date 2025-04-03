@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Tinder - Registro/Inicio Sesión</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+<div class="app">
+
+    <!-- Pantalla de Inicio (Elegir entre Registro o Login) -->
+    <section id="welcomeSection" class="card-form">
+        <h2>Bienvenido a <span class="app-name">Mi Tinder</span></h2>
+        <button class="action-btn" onclick="showRegister()">Registrarse</button>
+        <button class="action-btn secondary" onclick="showLogin()">Iniciar Sesión</button>
+    </section>
+
+    <!-- Registro -->
+    <section id="registerSection" class="hidden card-form">
+        <h2>Registro</h2>
+        <form id="registerForm">
+            <input type="text" id="firstName" placeholder="Primer nombre" required>
+            <input type="text" id="lastName1" placeholder="Apellido paterno" required>
+            <input type="text" id="lastName2" placeholder="Apellido materno" required>
+            <input type="date" id="birthdate" required>
+            <input type="text" id="location" placeholder="Lugar donde vives" required>
+            <input type="email" id="email" placeholder="Correo Gmail" required>
+            <button type="submit" class="action-btn">Registrarse</button>
+        </form>
+    </section>
+
+    <!-- Inicio de Sesión -->
+    <section id="loginSection" class="hidden card-form">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Correo Gmail" required>
+            <button type="submit" class="action-btn">Entrar</button>
+        </form>
+    </section>
+
+    <!-- Pantalla principal (Tinder) -->
+    <section id="tinderSection" class="hidden">
+        <header>
+            <h1>🔥 Mi Tinder</h1>
+        </header>
+
+        <main>
+            <div id="card-container"></div>
+            <div class="buttons">
+                <button id="dislikeBtn">❌</button>
+                <button id="likeBtn">❤️</button>
+            </div>
+        </main>
+
+       <nav class="bottom-nav">
+            <i class="ph ph-house" onclick="showTinder()"></i>
+            <i class="ph ph-user" onclick="showProfile()"></i>
+            <i class="ph ph-chat-circle"></i>
+            <i class="ph ph-camera"></i>
+            <i class="ph ph-gear"></i>
+        </nav>
+    </section>
+
+<!-- Pantalla principal (Usuario) -->
+      <section id="profileSection" class="hidden card-form">
+        <h2>Mi Perfil</h2>
+        <img id="profileImage" src="https://via.placeholder.com/100" alt="Foto de perfil">
+        <p><strong>Nombre:</strong> <span id="profileName"></span></p>
+        <p><strong>Edad:</strong> <span id="profileAge"></span></p>
+        <p><strong>Vive en:</strong> <span id="profileLocation"></span></p>
+        <p><strong>Gusto:</strong> <span id="profileHobbies">Cine, Viajar, Música</span></p>
+
+       <nav class="bottom-nav">
+            <i class="ph ph-house" onclick="showTinder()"></i>
+            <i class="ph ph-user" onclick="showProfile()"></i>
+            <i class="ph ph-chat-circle"></i>
+            <i class="ph ph-camera"></i>
+            <i class="ph ph-gear"></i>
+        </nav>
+    </section>
+
+</div>
+<script src="app.js"></script>
+</body>
+</html>
