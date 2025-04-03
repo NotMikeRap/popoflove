@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Tinder - Registro/Inicio Sesión</title>
+    <title>Mi Tinder</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
@@ -9,78 +9,289 @@
 </head>
 <body>
 <div class="app">
-
     <!-- Pantalla de Inicio (Elegir entre Registro o Login) -->
     <section id="welcomeSection" class="card-form">
+        <div class="logo">
+            <i class="ph ph-flame" style="color: #ff5a5f; font-size: 48px;"></i>
+        </div>
         <h2>Bienvenido a <span class="app-name">Mi Tinder</span></h2>
+        <p class="subtitle">Encuentra personas interesantes cerca de ti</p>
         <button class="action-btn" onclick="showRegister()">Registrarse</button>
         <button class="action-btn secondary" onclick="showLogin()">Iniciar Sesión</button>
     </section>
 
     <!-- Registro -->
     <section id="registerSection" class="hidden card-form">
-        <h2>Registro</h2>
+        <h2>Crear una cuenta</h2>
+        <p class="subtitle">Completa tus datos para comenzar</p>
         <form id="registerForm">
-            <input type="text" id="firstName" placeholder="Primer nombre" required>
-            <input type="text" id="lastName1" placeholder="Apellido paterno" required>
-            <input type="text" id="lastName2" placeholder="Apellido materno" required>
-            <input type="date" id="birthdate" required>
-            <input type="text" id="location" placeholder="Lugar donde vives" required>
-            <input type="email" id="email" placeholder="Correo Gmail" required>
+            <div class="form-group">
+                <label for="firstName">Nombre</label>
+                <input type="text" id="firstName" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName1">Apellido paterno</label>
+                <input type="text" id="lastName1" placeholder="Apellido paterno" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName2">Apellido materno</label>
+                <input type="text" id="lastName2" placeholder="Apellido materno" required>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Fecha de nacimiento</label>
+                <input type="date" id="birthdate" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Ciudad</label>
+                <input type="text" id="location" placeholder="¿Dónde vives?" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="tu@correo.com" required>
+            </div>
             <button type="submit" class="action-btn">Registrarse</button>
+            <p class="form-link">¿Ya tienes una cuenta? <span onclick="showLogin()" class="link">Inicia sesión</span></p>
         </form>
     </section>
 
     <!-- Inicio de Sesión -->
     <section id="loginSection" class="hidden card-form">
         <h2>Iniciar Sesión</h2>
+        <p class="subtitle">Ingresa tu correo para continuar</p>
         <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Correo Gmail" required>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="tu@correo.com" required>
+            </div>
             <button type="submit" class="action-btn">Entrar</button>
+            <p class="form-link">¿No tienes cuenta? <span onclick="showRegister()" class="link">Regístrate</span></p>
         </form>
     </section>
 
     <!-- Pantalla principal (Tinder) -->
     <section id="tinderSection" class="hidden">
         <header>
-            <h1>🔥 Mi Tinder</h1>
+            <h1><i class="ph ph-flame"></i> Mi Tinder</h1>
         </header>
-
         <main>
             <div id="card-container"></div>
             <div class="buttons">
-                <button id="dislikeBtn">❌</button>
-                <button id="likeBtn">❤️</button>
+                <button id="dislikeBtn" class="action-button dislike">
+                    <i class="ph ph-x-circle"></i>
+                </button>
+                <button id="likeBtn" class="action-button like">
+                    <i class="ph ph-heart"></i>
+                </button>
             </div>
         </main>
-
-       <nav class="bottom-nav">
-            <i class="ph ph-house" onclick="showTinder()"></i>
-            <i class="ph ph-user" onclick="showProfile()"></i>
+        <nav class="bottom-nav">
+            <i class="ph ph-house active"></i>
+            <i class="ph ph-user"></i>
             <i class="ph ph-chat-circle"></i>
             <i class="ph ph-camera"></i>
             <i class="ph ph-gear"></i>
         </nav>
     </section>
 
-<!-- Pantalla principal (Usuario) -->
-      <section id="profileSection" class="hidden card-form">
+    <!-- Pantalla de perfil -->
+    <section id="profileSection" class="hidden profile-section">
         <h2>Mi Perfil</h2>
-        <img id="profileImage" src="https://via.placeholder.com/100" alt="Foto de perfil">
-        <p><strong>Nombre:</strong> <span id="profileName"></span></p>
-        <p><strong>Edad:</strong> <span id="profileAge"></span></p>
-        <p><strong>Vive en:</strong> <span id="profileLocation"></span></p>
-        <p><strong>Gusto:</strong> <span id="profileHobbies">Cine, Viajar, Música</span></p>
-
-       <nav class="bottom-nav">
-            <i class="ph ph-house" onclick="showTinder()"></i>
-            <i class="ph ph-user" onclick="showProfile()"></i>
+        <div class="profile-card">
+            <img id="profileImage" src="https://via.placeholder.com/100" alt="Foto de perfil">
+            <div class="profile-info">
+                <p><strong>Nombre:</strong> <span id="profileName"></span></p>
+                <p><strong>Edad:</strong> <span id="profileAge"></span></p>
+                <p><strong>Vive en:</strong> <span id="profileLocation"></span></p>
+                <p><strong>Intereses:</strong> <span id="profileHobbies"></span></p>
+            </div>
+        </div>
+        
+        <div class="matches-section">
+            <h3>Mis Matches</h3>
+            <p id="noMatchesMessage">Aún no tienes matches. ¡Sigue explorando!</p>
+            <div id="profileMatches" class="matches-container hidden"></div>
+        </div>
+        
+        <button onclick="logout()" class="action-btn secondary logout-btn">
+            <i class="ph ph-sign-out"></i> Cerrar sesión
+        </button>
+        
+        <nav class="bottom-nav">
+            <i class="ph ph-house"></i>
+            <i class="ph ph-user active"></i>
             <i class="ph ph-chat-circle"></i>
             <i class="ph ph-camera"></i>
             <i class="ph ph-gear"></i>
         </nav>
     </section>
+    
+    <!-- Sección de chat -->
+    <section id="chatSection" class="hidden">
+        <header>
+            <h1>Chats</h1>
+        </header>
+        <div id="chatList" class="chat-container"></div>
+        <nav class="bottom-nav">
+            <i class="ph ph-house"></i>
+            <i class="ph ph-user"></i>
+            <i class="ph ph-chat-circle active"></i>
+            <i class="ph ph-camera"></i>
+            <i class="ph ph-gear"></i>
+        </nav>
+    </section>
+    
+    <!-- Sección de cámara -->
+    <section id="cameraSection" class="hidden">
+        <header>
+            <h1>Cámara</h1>
+        </header>
+        <div class="camera-container">
+            <div class="camera-placeholder">
+                <i class="ph ph-camera" style="font-size: 64px; color: #ccc;"></i>
+                <p>Mejora tu perfil añadiendo fotos</p>
+                <button class="action-btn">Acceder a la cámara</button>
+            </div>
+        </div>
+        <nav class="bottom-nav">
+            <i class="ph ph-house"></i>
+            <i class="ph ph-user"></i>
+            <i class="ph ph-chat-circle"></i>
+            <i class="ph ph-camera active"></i>
+            <i class="ph ph-gear"></i>
+        </nav>
+    </section>
+    
+    <!-- Sección de configuración -->
+    <section id="settingsSection" class="hidden">
+        <header>
+            <h1>Configuración</h1>
+        </header>
+        <div class="settings-container">
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="ph ph-bell"></i>
+                    <span>Notificaciones</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="ph ph-lock"></i>
+                    <span>Privacidad</span>
+                </div>
+                <i class="ph ph-caret-right"></i>
+            </div>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="ph ph-question"></i>
+                    <span>Ayuda</span>
+                </div>
+                <i class="ph ph-caret-right"></i>
+            </div>
+            <div class="setting-item">
+                <div class="setting-info">
+                    <i class="ph ph-info"></i>
+                    <span>Acerca de</span>
+                </div>
+                <i class="ph ph-caret-right"></i>
+            </div>
+        </div>
+        <nav class="bottom-nav">
+            <i class="ph ph-house"></i>
+            <i class="ph ph-user"></i>
+            <i class="ph ph-chat-circle"></i>
+            <i class="ph ph-camera"></i>
+            <i class="ph ph-gear active"></i>
+        </nav>
+    </section>
+<!-- Agregar las siguientes secciones al archivo index.html dentro de <div class="app"> -->
 
+<!-- Sección de detalle de chat -->
+<section id="chatDetailSection" class="hidden">
+    <header class="chat-header">
+        <button id="backToChatsBtn" class="back-button">
+            <i class="ph ph-arrow-left"></i>
+        </button>
+        <div class="chat-profile">
+            <img id="chatProfileImg" src="" alt="Foto de perfil">
+            <h3 id="chatProfileName"></h3>
+        </div>
+        <button id="viewProfileBtn" class="profile-button">
+            <i class="ph ph-info"></i>
+        </button>
+    </header>
+    
+    <div id="messagesContainer" class="messages-container"></div>
+    
+    <form id="messageForm" class="message-form">
+        <div class="message-input-container">
+            <button type="button" class="attachment-btn">
+                <i class="ph ph-paperclip"></i>
+            </button>
+            <input type="text" id="messageInput" placeholder="Escribe un mensaje..." autocomplete="off">
+            <button type="button" class="emoji-btn">
+                <i class="ph ph-smiley"></i>
+            </button>
+        </div>
+        <button type="submit" class="send-btn">
+            <i class="ph ph-paper-plane-right"></i>
+        </button>
+    </form>
+</section>
+
+<!-- Sección de perfil de match -->
+<section id="matchProfileSection" class="hidden">
+    <header class="profile-header">
+        <button id="backToChatBtn" class="back-button">
+            <i class="ph ph-arrow-left"></i>
+        </button>
+        <h3>Perfil</h3>
+    </header>
+    
+    <div class="match-profile-container">
+        <div class="match-profile-hero">
+            <img id="matchProfileImg" src="" alt="Foto de perfil">
+        </div>
+        
+        <div class="match-profile-info">
+            <h2 id="matchProfileName"></h2>
+            <p class="age"><span id="matchProfileAge"></span> años</p>
+            <p class="bio" id="matchProfileBio"></p>
+        </div>
+        
+        <div class="match-gallery-section">
+            <h4>Fotos</h4>
+            <div id="matchGallery" class="match-gallery"></div>
+        </div>
+        
+        <div class="profile-actions">
+            <button class="action-btn">Enviar mensaje</button>
+            <button class="action-btn secondary">Compartir perfil</button>
+        </div>
+    </div>
+</section>
+
+<!-- Sección para compartir fotos -->
+<section id="sharePhotoSection" class="hidden">
+    <header>
+        <button id="cancelShareBtn" class="back-button">
+            <i class="ph ph-arrow-left"></i>
+        </button>
+        <h1>Compartir foto</h1>
+    </header>
+    
+    <div class="share-photo-container">
+        <div class="photo-preview-container">
+            <img id="photoPreview" src="" alt="Vista previa">
+        </div>
+        
+        <h3>Enviar a:</h3>
+        <div id="shareContactList" class="share-contact-list"></div>
+    </div>
+</section>
 </div>
 <script src="app.js"></script>
 </body>
