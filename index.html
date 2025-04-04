@@ -41,6 +41,29 @@
                 <label for="birthdate">Fecha de nacimiento</label>
                 <input type="date" id="birthdate" required>
             </div>
+<div class="form-group">
+        <label for="genero">Selecciona tu genero</label>
+        <select id="genero">
+            <option value="">¿Genero?</option>
+            <option value="Hombre">Hombre</option>
+            <option value="Mujer">Mujer</option>
+            <option value="otro-genero">Otro</option>
+        </select>
+    </div>
+<div class="form-group">
+        <label for="orientacion">Selecciona tu orientación sexual</label>
+        <select id="orientacion">
+            <option value="">¿Como te defines?</option>
+            <option value="heterosexual">Heterosexual</option>
+            <option value="homosexual">Homosexual</option>
+            <option value="bisexual">Bisexual</option>
+            <option value="pansexual">Pansexual</option>
+            <option value="asexual">Asexual</option>
+            <option value="demisexual">Demisexual</option>
+            <option value="queer">Queer</option>
+            <option value="otro">Otro</option>
+        </select>
+    </div>
             <div class="form-group">
                 <label for="location">Ciudad</label>
                 <input type="text" id="location" placeholder="¿Dónde vives?" required>
@@ -101,6 +124,10 @@
             <div class="profile-info">
                 <p><strong>Nombre:</strong> <span id="profileName"></span></p>
                 <p><strong>Edad:</strong> <span id="profileAge"></span></p>
+                <p><strong>Genero:</strong> <span id="profileGenero">
+</span></p>
+                <p><strong>Sexualidad:</strong> <span id="profileOrientacion">
+</span></p>
                 <p><strong>Vive en:</strong> <span id="profileLocation"></span></p>
                 <p><strong>Intereses:</strong> <span id="profileHobbies"></span></p>
             </div>
