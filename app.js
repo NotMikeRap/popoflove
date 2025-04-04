@@ -64,6 +64,8 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         birthdate: birthdate,
         location: document.getElementById('location').value,
         email: email,
+        genero: document.getElementById('genero').value,
+        orientacion: document.getElementById('orientacion').value,
         hobbies: "Cine, Viajar, Música", // Default hobbies
         matches: [],
         profileImg: `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'women' : 'men'}/${Math.floor(Math.random() * 70)}.jpg`
@@ -279,31 +281,30 @@ function loadProfile() {
     document.getElementById('profileImage').src = currentUser.profileImg || 'https://via.placeholder.com/100';
     document.getElementById('profileName').textContent = `${currentUser.firstName} ${currentUser.lastName1} ${currentUser.lastName2}`;
     document.getElementById('profileAge').textContent = calcularEdad(currentUser.birthdate);
-    document.getElementById('profileGenero').textContent = currentUser.genero;
-    document.getElementById('profileOrientacion').textContent = currentUser.orientacion;
     document.getElementById('profileLocation').textContent = currentUser.location;
     document.getElementById('profileHobbies').textContent = currentUser.hobbies || 'Cine, Viajar, Música';
 
-const genero = document.getElementById('profileGenero').value;
-    const orientacion = document.getElementById('profileOrientacion').value
-    
+    // Mostrar género y orientación
+    document.getElementById('profileGenero').textContent = currentUser.genero || 'No especificado';
+    document.getElementById('profileOrientacion').textContent = currentUser.orientacion || 'No especificado';
+
     // Display matches if any
     const matchesContainer = document.getElementById('profileMatches');
     if (matchesContainer) {
         matchesContainer.innerHTML = '';
-        
+
         if (currentUser.matches && currentUser.matches.length > 0) {
             document.getElementById('noMatchesMessage').classList.add('hidden');
             matchesContainer.classList.remove('hidden');
-            
+
             currentUser.matches.forEach(match => {
-                const matchEl = document.createElement('div');
-                matchEl.className = 'match-item';
-                matchEl.innerHTML = `
+                const matchItem = document.createElement('div');
+                matchItem.className = 'match-item';
+                matchItem.innerHTML = `
                     <img src="${match.img}" alt="${match.name}">
-                    <p>${match.name}, ${match.age}</p>
+                    <p>${match.name}</p>
                 `;
-                matchesContainer.appendChild(matchEl);
+                matchesContainer.appendChild(matchItem);
             });
         } else {
             document.getElementById('noMatchesMessage').classList.remove('hidden');
