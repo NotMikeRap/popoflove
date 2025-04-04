@@ -51,19 +51,18 @@
         </select>
     </div>
 <div class="form-group">
-        <label for="orientacion">Selecciona tu orientación sexual</label>
-        <select id="orientacion">
-            <option value="">¿Como te defines?</option>
-            <option value="heterosexual">Heterosexual</option>
-            <option value="homosexual">Homosexual</option>
-            <option value="bisexual">Bisexual</option>
-            <option value="pansexual">Pansexual</option>
-            <option value="asexual">Asexual</option>
-            <option value="demisexual">Demisexual</option>
-            <option value="queer">Queer</option>
-            <option value="otro">Otro</option>
-        </select>
-    </div>
+  <label for="orientacion">Selecciona tu orientación sexual</label>
+  <select id="orientacion">
+    <option value="">¿Como te defines?</option>
+    <option value="Heterosexual">Heterosexual</option>
+    <option value="Homosexual">Homosexual</option>
+    <option value="Bisexual">Bisexual</option>
+    <option value="Pansexual">Pansexual</option>
+    <option value="Asexual">Asexual</option>
+    <option value="Demisexual">Demisexual</option>
+    <option value="Queer">Queer</option>
+    <option value="Otro">Otro</option></select>
+</div>
             <div class="form-group">
                 <label for="location">Ciudad</label>
                 <input type="text" id="location" placeholder="¿Dónde vives?" required>
@@ -117,9 +116,11 @@
     </section>
 
 <!-- Pantalla de perfil -->
-<section id="profileSection" class="hidden profile-section">
-    <h2>Mi Perfil</h2>
-    <div class="profile-card">
+<section id="profileSection" class="hidden">
+    <header>
+      <h1>Mi Perfil</h1>
+    </header>
+    <div class="profile-card profile-section">
         <div class="profile-image-container">
             <img id="profileImage" src="https://via.placeholder.com/100" alt="Foto de perfil">
             <button onclick="changeProfilePicture()" class="change-photo-btn">
@@ -136,15 +137,16 @@
         </div>
     </div>
     
-    <div class="matches-section">
+    <div class="matches-section profile-section">
         <h3>Mis Matches</h3>
         <p id="noMatchesMessage">Aún no tienes matches. ¡Sigue explorando!</p>
         <div id="profileMatches" class="matches-container hidden"></div>
     </div>
-    
+<div class="profile-section">
     <button onclick="logout()" class="action-btn secondary logout-btn">
         <i class="ph ph-sign-out"></i> Cerrar sesión
     </button>
+</div>
     
     <nav class="bottom-nav">
         <i class="ph ph-house"></i>
