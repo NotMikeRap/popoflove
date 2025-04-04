@@ -279,8 +279,13 @@ function loadProfile() {
     document.getElementById('profileImage').src = currentUser.profileImg || 'https://via.placeholder.com/100';
     document.getElementById('profileName').textContent = `${currentUser.firstName} ${currentUser.lastName1} ${currentUser.lastName2}`;
     document.getElementById('profileAge').textContent = calcularEdad(currentUser.birthdate);
+    document.getElementById('profileGenero').textContent = currentUser.genero;
+    document.getElementById('profileOrientacion').textContent = currentUser.orientacion;
     document.getElementById('profileLocation').textContent = currentUser.location;
     document.getElementById('profileHobbies').textContent = currentUser.hobbies || 'Cine, Viajar, Música';
+
+const genero = document.getElementById('profileGenero').value;
+    const orientacion = document.getElementById('profileOrientacion').value
     
     // Display matches if any
     const matchesContainer = document.getElementById('profileMatches');
