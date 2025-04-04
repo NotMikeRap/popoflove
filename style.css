@@ -468,7 +468,6 @@ main {
     align-items: center;
     height: calc(100% - 125px);
     padding: 20px;
-    margin-top:40px;
 }
 
 .camera-placeholder {
@@ -1381,6 +1380,7 @@ main {
     align-items: center;
     height: calc(100% - 125px);
     padding: 20px;
+    margin-top:40px;
 }
 
 .camera-placeholder {
@@ -1808,4 +1808,60 @@ input:checked + .slider:before {
     max-height: 200px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.profile-image-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* Change photo button styling */
+.change-photo-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #ff4b7d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.change-photo-btn:hover {
+    background-color: #e6396d;
+}
+
+/* Toast notification styling */
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.toast-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Ensure the profile image has consistent dimensions */
+#profileImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
 }
