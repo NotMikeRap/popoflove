@@ -1,3 +1,5 @@
+// AUTORS: Sivlia and Alex
+
 // Profile data
 const profiles = [
     { name: "Ana", age: 28, bio: "Me encanta viajar y la fotografía", img: "https://randomuser.me/api/portraits/women/45.jpg" },
