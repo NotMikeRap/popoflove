@@ -771,3 +771,72 @@ document.addEventListener('DOMContentLoaded', function() {
         setupCameraFunctionality();
     }
 });
+
+function changeProfilePicture() {
+    // Create a file input element
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    
+    // When a file is selected
+    fileInput.onchange = function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        // Create a FileReader to read the image
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            // Update the profile image in the UI
+            document.getElementById('profileImage').src = event.target.result;
+            
+            // Update the current user object
+            if (currentUser) {
+                currentUser.profileImg = event.target.result;
+                
+                // Save updated user to localStorage or your backend
+                saveUserData(currentUser);
+            }
+            
+            // Show success message
+            showToast('Foto de perfil actualizada correctamente');
+        };
+        
+        reader.readAsDataURL(file);
+    };
+    
+    // Trigger the file selection dialog
+    fileInput.click();
+}
+
+// Helper function to save user data (implement based on your storage method)
+function saveUserData(user) {
+    // If using localStorage
+    if (user.id) {
+        localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
+    }
+    
+    // If using a backend API, you might do something like:
+    // fetch('/api/users/update-profile', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(user)
+    // });
+}
+
+// Toast notification function
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.textContent = message;
+    
+    document.body.appendChild(toast);
+    
+    // Show the toast
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    // Hide and remove the toast after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => document.body.removeChild(toast), 300);
+    }, 3000);
+}
