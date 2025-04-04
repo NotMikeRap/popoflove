@@ -468,6 +468,7 @@ main {
     align-items: center;
     height: calc(100% - 125px);
     padding: 20px;
+    margin-top:40px;
 }
 
 .camera-placeholder {
