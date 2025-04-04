@@ -116,41 +116,44 @@
         </nav>
     </section>
 
-    <!-- Pantalla de perfil -->
-    <section id="profileSection" class="hidden profile-section">
-        <h2>Mi Perfil</h2>
-        <div class="profile-card">
+<!-- Pantalla de perfil -->
+<section id="profileSection" class="hidden profile-section">
+    <h2>Mi Perfil</h2>
+    <div class="profile-card">
+        <div class="profile-image-container">
             <img id="profileImage" src="https://via.placeholder.com/100" alt="Foto de perfil">
-            <div class="profile-info">
-                <p><strong>Nombre:</strong> <span id="profileName"></span></p>
-                <p><strong>Edad:</strong> <span id="profileAge"></span></p>
-                <p><strong>Genero:</strong> <span id="profileGenero">
-</span></p>
-                <p><strong>Sexualidad:</strong> <span id="profileOrientacion">
-</span></p>
-                <p><strong>Vive en:</strong> <span id="profileLocation"></span></p>
-                <p><strong>Intereses:</strong> <span id="profileHobbies"></span></p>
-            </div>
+            <button onclick="changeProfilePicture()" class="change-photo-btn">
+                <i class="ph ph-camera"></i>
+            </button>
         </div>
-        
-        <div class="matches-section">
-            <h3>Mis Matches</h3>
-            <p id="noMatchesMessage">Aún no tienes matches. ¡Sigue explorando!</p>
-            <div id="profileMatches" class="matches-container hidden"></div>
+        <div class="profile-info">
+            <p><strong>Nombre:</strong> <span id="profileName"></span></p>
+            <p><strong>Edad:</strong> <span id="profileAge"></span></p>
+            <p><strong>Genero:</strong> <span id="profileGenero"></span></p>
+            <p><strong>Sexualidad:</strong> <span id="profileOrientacion"></span></p>
+            <p><strong>Vive en:</strong> <span id="profileLocation"></span></p>
+            <p><strong>Intereses:</strong> <span id="profileHobbies"></span></p>
         </div>
-        
-        <button onclick="logout()" class="action-btn secondary logout-btn">
-            <i class="ph ph-sign-out"></i> Cerrar sesión
-        </button>
-        
-        <nav class="bottom-nav">
-            <i class="ph ph-house"></i>
-            <i class="ph ph-user active"></i>
-            <i class="ph ph-chat-circle"></i>
-            <i class="ph ph-camera"></i>
-            <i class="ph ph-gear"></i>
-        </nav>
-    </section>
+    </div>
+    
+    <div class="matches-section">
+        <h3>Mis Matches</h3>
+        <p id="noMatchesMessage">Aún no tienes matches. ¡Sigue explorando!</p>
+        <div id="profileMatches" class="matches-container hidden"></div>
+    </div>
+    
+    <button onclick="logout()" class="action-btn secondary logout-btn">
+        <i class="ph ph-sign-out"></i> Cerrar sesión
+    </button>
+    
+    <nav class="bottom-nav">
+        <i class="ph ph-house"></i>
+        <i class="ph ph-user active"></i>
+        <i class="ph ph-chat-circle"></i>
+        <i class="ph ph-camera"></i>
+        <i class="ph ph-gear"></i>
+    </nav>
+</section>
     
     <!-- Sección de chat -->
     <section id="chatSection" class="hidden">
